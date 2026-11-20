@@ -1,0 +1,60 @@
+import { Chapter } from '@/types/chapter'
+
+export const CHAPTERS: Chapter[] = [
+  {
+    id: 'ch1',
+    chapterNo: 1,
+    title: 'Introduction to Materials Science and Engineering',
+    description: 'Pengenalan kepada sains bahan dan kejuruteraan, klasifikasi bahan, dan kepentingan dalam industri moden.',
+    color: '#3B82F6',
+    icon: '🔬',
+  },
+  {
+    id: 'ch2',
+    chapterNo: 2,
+    title: 'Materials Structure and Interatomic Bonding',
+    description: 'Struktur atom, ikatan interatom, struktur kristal dan amorfus dalam bahan kejuruteraan.',
+    color: '#8B5CF6',
+    icon: '⚛️',
+  },
+  {
+    id: 'ch3',
+    chapterNo: 3,
+    title: 'Materials Properties of Metals and Failure',
+    description: 'Sifat mekanik, elektrik, dan termal logam serta mekanisme kegagalan bahan.',
+    color: '#EC4899',
+    icon: '⚙️',
+  },
+  {
+    id: 'ch4',
+    chapterNo: 4,
+    title: 'Imperfections in Solids and Phase Diagram',
+    description: 'Kecacatan kristal, dislokasi, dan rajah fasa untuk sistem logam pelbagai komponen.',
+    color: '#F59E0B',
+    icon: '🧩',
+  },
+  {
+    id: 'ch5',
+    chapterNo: 5,
+    title: 'Metals and Alloys for Engineering Applications',
+    description: 'Jenis aloi logam, perlakuan haba, dan aplikasi dalam kejuruteraan moden.',
+    color: '#10B981',
+    icon: '🏗️',
+  },
+  {
+    id: 'ch6',
+    chapterNo: 6,
+    title: 'Corrosion of Metals',
+    description: 'Proses kakisan logam, jenis kakisan, dan kaedah pencegahan dalam aplikasi kejuruteraan.',
+    color: '#EF4444',
+    icon: '🔴',
+  },
+  {
+    id: 'ch7',
+    chapterNo: 7,
+    title: 'Material Testing',
+    description: 'Kaedah ujian bahan: ujian tegangan, ujian kekerasan, ujian impak, dan ujian tidak musnah.',
+    color: '#6366F1',
+    icon: '🧪',
+  },
+]

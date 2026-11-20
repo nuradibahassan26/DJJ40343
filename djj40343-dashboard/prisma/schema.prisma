@@ -1,0 +1,86 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  name      String
+  email     String   @unique
+  password  String
+  matricNo  String?  @unique
+  role      Role     @default(STUDENT)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  progress StudentProgress[]
+
+  @@map("users")
+}
+
+model Chapter {
+  id          String  @id @default(cuid())
+  chapterNo   Int     @unique
+  title       String
+  description String?
+  isActive    Boolean @default(true)
+
+  assessments Assessment[]
+
+  @@map("chapters")
+}
+
+model Assessment {
+  id        String         @id @default(cuid())
+  chapterId String
+  type      AssessmentType
+  title     String
+  content   Json?          // soalan quiz, link simulasi, dll
+  maxScore  Float          @default(100)
+  order     Int            @default(0)
+
+  chapter  Chapter           @relation(fields: [chapterId], references: [id])
+  progress StudentProgress[]
+
+  @@map("assessments")
+}
+
+model StudentProgress {
+  id           String   @id @default(cuid())
+  userId       String
+  assessmentId String
+  score        Float?
+  completed    Boolean  @default(false)
+  attempts     Int      @default(0)
+  completedAt  DateTime?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  user       User       @relation(fields: [userId], references: [id])
+  assessment Assessment @relation(fields: [assessmentId], references: [id])
+
+  @@unique([userId, assessmentId])
+  @@map("student_progress")
+}
+
+enum Role {
+  STUDENT
+  LECTURER
+  ADMIN
+}
+
+enum AssessmentType {
+  NOTES
+  PRE_QUIZ
+  POST_QUIZ
+  SIMULATION
+  GAMES
+  TUTORIAL
+}
